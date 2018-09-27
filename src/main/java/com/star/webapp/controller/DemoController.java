@@ -13,18 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DemoController {
 
     @RequestMapping("index")
-    public void index(
-            HttpServletResponse response
-            ) throws Exception{
+    public void index(HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=utf-8");
         System.out.println("访问到了");
-        try{
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("name", "shaoxin");
-            jsonObject.put("age", 22);
-            response.getWriter().println(jsonObject.toString());
-        }catch(JSONException ex){
-            ex.printStackTrace();
-        }
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", "shaoxin");
+        jsonObject.put("age", 22);
+        response.getWriter().println(jsonObject.toString());
     }
 }

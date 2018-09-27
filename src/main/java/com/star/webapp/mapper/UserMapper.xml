@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.star.webapp.mapper.UserMapper">
+
+
+	<select id="getUsers" resultType="com.star.webapp.model.UserInfo">
+		SELECT
+		user_id,nick_name,avatar,city,job,fans_num,board_num,collection_num,like_num,subscribe_num
+		FROM demo.user_info where user_id > 10;
+	</select>
+
+	<select id="myUserInfo" parameterType="int"
+		resultType="com.star.webapp.model.UserInfo">
+		SELECT
+		user_id,nick_name,avatar,city,job,fans_num,board_num,collection_num,like_num,subscribe_num
+		FROM demo.user_info where user_id = #{user_id};
+	</select>
+
+
+</mapper>
