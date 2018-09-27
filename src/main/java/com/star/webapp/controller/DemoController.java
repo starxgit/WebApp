@@ -1,5 +1,10 @@
 package com.star.webapp.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,8 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DemoController {
 
     @RequestMapping("index")
-    public String index() {
+    public void index(
+            HttpServletResponse response
+            ) throws Exception{
+        response.setContentType("text/html;charset=utf-8");
         System.out.println("访问到了");
-        return "demo";
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", "shaoxin");
+            jsonObject.put("age", 22);
+            response.getWriter().println(jsonObject.toString());
+        }catch(JSONException ex){
+            ex.printStackTrace();
+        }
     }
 }
