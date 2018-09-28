@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.star.webapp.dao.BoardDao;
 import com.star.webapp.dao.UserDao;
+import com.star.webapp.model.Board;
 import com.star.webapp.model.UserInfo;
 
 @Controller
@@ -21,6 +23,8 @@ import com.star.webapp.model.UserInfo;
 public class UserController {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private BoardDao boardDao;
 
     @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     public void getUsers(HttpServletResponse response) throws Exception {
@@ -38,6 +42,15 @@ public class UserController {
         UserInfo userInfo = userDao.myUserInfo(user_id);
         JSONObject jsonObject = JSONObject.fromObject(userInfo);
         response.getWriter().println(jsonObject.toString());
+    }
+
+    @RequestMapping(value = "/myBoards", method = RequestMethod.GET)
+    public void myBoards(HttpServletResponse response,
+            @RequestParam Integer user_id) throws Exception {
+        response.setContentType("text/html;charset=utf-8");
+        List<Board> myBoards = boardDao.myBorders(user_id);
+        JSONArray jsonArray = JSONArray.fromObject(myBoards);
+        response.getWriter().println(jsonArray.toString());
     }
 
 }
