@@ -37,7 +37,7 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.schedule" />
+		<property name="basePackage" value="com.star.webapp" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 

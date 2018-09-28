@@ -15,6 +15,13 @@ public class UserInfo {
     private int collection_num;
     private int like_num;
     private int subscribe_num;
+    
+    /**
+     * 必须要无参构造方法
+     * */
+    public UserInfo() {
+        super();
+    }
     public UserInfo(int user_id, String nick_name, String avatar, String city,
             String job, int fans_num, int board_num, int collection_num,
             int like_num, int subscribe_num) {
