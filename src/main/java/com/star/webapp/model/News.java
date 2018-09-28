@@ -9,6 +9,10 @@ public class News {
     private String news_cover;
     private String news_text;
     
+    public News() {
+        super();
+    }
+
     public News(int news_id, String news_cover, String news_text) {
         super();
         this.news_id = news_id;

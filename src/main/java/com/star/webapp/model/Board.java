@@ -11,6 +11,10 @@ public class Board {
     private String board_name;
     private String board_cover;
     
+    public Board() {
+        super();
+    }
+
     public Board(int board_id, int user_id, int board_num, String board_name,
             String board_cover) {
         super();

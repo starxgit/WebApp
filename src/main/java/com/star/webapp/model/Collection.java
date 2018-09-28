@@ -13,6 +13,10 @@ public class Collection {
     private int re_collection_num;
     private int like_num;
     
+    public Collection() {
+        super();
+    }
+
     public Collection(int collection_id, int user_id, String collection_name,
             int board_id, String collection_image, int re_collection_num,
             int like_num) {
