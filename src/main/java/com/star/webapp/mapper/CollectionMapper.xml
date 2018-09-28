@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.star.webapp.mapper.BoardMapper">
+<mapper namespace="com.star.webapp.mapper.CollectionMapper">
 
 
-	<select id="myBorders" parameterType="int"
-		resultType="com.star.webapp.model.Board">
-		select board_id,user_id,board_name,board_num,board_cover
+	<select id="findMyCollections" parameterType="int"
+		resultType="com.star.webapp.model.Collection">
+		select board_id,board_name,board_num,board_cover
 		from board
 		where user_id = #{user_id}
 	</select>
 
-	<select id="likeBoards" resultType="com.star.webapp.model.Board">
+	<select id="findOtherCollections" resultType="com.star.webapp.model.Collection">
 		select
 		board_id,board_name,board_num,board_cover from board where
 		board_id>10
 	</select>
+
 
 </mapper>

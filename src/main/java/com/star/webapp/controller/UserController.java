@@ -26,6 +26,10 @@ public class UserController {
     @Autowired
     private BoardDao boardDao;
 
+    /**
+     * 获取我关注的用户列表
+     * 包括该用户用户名，用户头像，粉丝数量
+     * */
     @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     public void getUsers(HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=utf-8");
@@ -34,7 +38,11 @@ public class UserController {
         jsonArray = JSONArray.fromObject(users);
         response.getWriter().println(jsonArray.toString());
     }
-
+    
+    /**
+     * 获取我的基本信息
+     * 包括我的用户名，用户头像，粉丝数量，所在地区，职业，画板数量，采集数量，喜欢数量，关注数量
+     * */
     @RequestMapping(value = "/myUserInfo", method = RequestMethod.GET)
     public void myUserInfo(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
@@ -43,7 +51,11 @@ public class UserController {
         JSONObject jsonObject = JSONObject.fromObject(userInfo);
         response.getWriter().println(jsonObject.toString());
     }
-
+    
+    /**
+     * 获取我的画板
+     * 包括该用户用户名，用户头像，粉丝数量
+     * */
     @RequestMapping(value = "/myBoards", method = RequestMethod.GET)
     public void myBoards(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
