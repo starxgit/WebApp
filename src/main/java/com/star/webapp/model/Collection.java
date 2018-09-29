@@ -1,33 +1,20 @@
 package com.star.webapp.model;
 
-/** 
- * Created By shaoxin On 2018-09-27
- * 采集的模型类
+/**
+ * Created By shaoxin On 2018-09-27 采集的模型类
  * */
 public class Collection {
     private int collection_id;
-    private int user_id;
     private String collection_name;
-    private int board_id;
     private String collection_image;
     private int re_collection_num;
     private int like_num;
-    
+    private String avatar;
+    private String nick_name;
+    private String board_name;
+
     public Collection() {
         super();
-    }
-
-    public Collection(int collection_id, int user_id, String collection_name,
-            int board_id, String collection_image, int re_collection_num,
-            int like_num) {
-        super();
-        this.collection_id = collection_id;
-        this.user_id = user_id;
-        this.collection_name = collection_name;
-        this.board_id = board_id;
-        this.collection_image = collection_image;
-        this.re_collection_num = re_collection_num;
-        this.like_num = like_num;
     }
 
     public int getCollection_id() {
@@ -38,28 +25,12 @@ public class Collection {
         this.collection_id = collection_id;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
     public String getCollection_name() {
         return collection_name;
     }
 
     public void setCollection_name(String collection_name) {
         this.collection_name = collection_name;
-    }
-
-    public int getBoard_id() {
-        return board_id;
-    }
-
-    public void setBoard_id(int board_id) {
-        this.board_id = board_id;
     }
 
     public String getCollection_image() {
@@ -86,13 +57,38 @@ public class Collection {
         this.like_num = like_num;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
+    }
+
+    public String getBoard_name() {
+        return board_name;
+    }
+
+    public void setBoard_name(String board_name) {
+        this.board_name = board_name;
+    }
+
     @Override
     public String toString() {
-        return "Collection [collection_id=" + collection_id + ", user_id="
-                + user_id + ", collection_name=" + collection_name
-                + ", board_id=" + board_id + ", collection_image="
-                + collection_image + ", re_collection_num=" + re_collection_num
-                + ", like_num=" + like_num + "]";
+        return "Collection [collection_id=" + collection_id
+                + ", collection_name=" + collection_name
+                + ", collection_image=" + collection_image
+                + ", re_collection_num=" + re_collection_num + ", like_num="
+                + like_num + ", avatar=" + avatar + ", nick_name=" + nick_name
+                + ", board_name=" + board_name + "]";
     }
-    
+
 }

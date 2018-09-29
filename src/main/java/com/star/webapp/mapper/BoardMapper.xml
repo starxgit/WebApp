@@ -3,17 +3,33 @@
 <mapper namespace="com.star.webapp.mapper.BoardMapper">
 
 
-	<select id="myBorders" parameterType="int"
-		resultType="com.star.webapp.model.Board">
-		select board_id,user_id,board_name,board_num,board_cover
-		from board
-		where user_id = #{user_id}
-	</select>
-
-	<select id="likeBoards" resultType="com.star.webapp.model.Board">
+	<select id="myBorders" parameterType="int" resultMap="myBoards">
 		select
-		board_id,board_name,board_num,board_cover from board where
-		board_id>10
+		board_id,board_name,board_num,board_cover
+		from board
+		where
+		user_id = #{user_id}
 	</select>
 
+	<resultMap id="myBoards" type="com.star.webapp.model.Board">
+		<id property="board_id" column="board_id" />
+		<id property="board_name" column="board_name" />
+		<id property="board_num" column="board_num" />
+		<id property="board_cover" column="board_cover" />
+	</resultMap>
+
+	<select id="likeBoards" resultMap="likeBoards">
+		select
+		board_id,board_name,board_cover,nick_name from
+		board left join
+		user_info on board.user_id = user_info.user_id
+		where board_id>10
+	</select>
+
+	<resultMap id="likeBoards" type="com.star.webapp.model.Board">
+		<id property="board_id" column="board_id" />
+		<id property="board_name" column="board_name" />
+		<id property="board_cover" column="board_cover" />
+		<id property="nickn_ame" column="board_cover" />
+	</resultMap>
 </mapper>

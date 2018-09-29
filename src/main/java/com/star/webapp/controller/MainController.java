@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.star.webapp.model.Board;
+import com.star.webapp.model.Collection;
 import com.star.webapp.service.BoardService;
+import com.star.webapp.service.CollectionService;
 
 @Controller
 @RequestMapping("/main")
@@ -22,6 +24,8 @@ public class MainController {
 
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private CollectionService collectionService;
 
     /**
      * 获取我的画板列表
@@ -50,7 +54,11 @@ public class MainController {
     @RequestMapping(value = "/myCollectionList", method = RequestMethod.GET)
     public void myCollectionList(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
-
+        response.setContentType("text/html;charset=utf-8");
+        List<Collection> collections = new ArrayList<Collection>();
+        collections = collectionService.myCollections(user_id);
+        JSONArray jsonArray = JSONArray.fromObject(collections);
+        response.getWriter().println(jsonArray.toString());
     }
 
     /**
@@ -63,7 +71,11 @@ public class MainController {
     @RequestMapping(value = "/myLikeList", method = RequestMethod.GET)
     public void myLikeList(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
-
+        response.setContentType("text/html;charset=utf-8");
+        List<Collection> collections = new ArrayList<Collection>();
+        collections = collectionService.otherCollections();
+        JSONArray jsonArray = JSONArray.fromObject(collections);
+        response.getWriter().println(jsonArray.toString());
     }
 
     /**

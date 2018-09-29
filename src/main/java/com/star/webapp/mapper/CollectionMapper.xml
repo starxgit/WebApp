@@ -5,15 +5,23 @@
 
 	<select id="findMyCollections" parameterType="int"
 		resultType="com.star.webapp.model.Collection">
-		select board_id,board_name,board_num,board_cover
-		from board
-		where user_id = #{user_id}
+		select
+		collection_id,collection_name,collection_image,re_collection_num,collection.like_num,avatar,nick_name,board_name
+		from collection left join user_info on collection.user_id =
+		user_info.user_id
+		left join board on collection.board_id =
+		board.board_id
+		where collection.user_id =#{user_id}
 	</select>
 
 	<select id="findOtherCollections" resultType="com.star.webapp.model.Collection">
 		select
-		board_id,board_name,board_num,board_cover from board where
-		board_id>10
+		collection_id,collection_name,collection_image,re_collection_num,collection.like_num,avatar,nick_name,board_name
+		from collection left join user_info on collection.user_id =
+		user_info.user_id
+		left join board on collection.board_id =
+		board.board_id
+		where collection_id > 10
 	</select>
 
 

@@ -9,19 +9,10 @@ public class Board {
     private int user_id;
     private String board_name;
     private String board_cover;
+    private String nick_name;
 
     public Board() {
         super();
-    }
-
-    public Board(int board_id, int board_num, int user_id, String board_name,
-            String board_cover) {
-        super();
-        this.board_id = board_id;
-        this.board_num = board_num;
-        this.user_id = user_id;
-        this.board_name = board_name;
-        this.board_cover = board_cover;
     }
 
     public int getBoard_id() {
@@ -64,11 +55,20 @@ public class Board {
         this.board_cover = board_cover;
     }
 
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
+    }
+
     @Override
     public String toString() {
         return "Board [board_id=" + board_id + ", board_num=" + board_num
                 + ", user_id=" + user_id + ", board_name=" + board_name
-                + ", board_cover=" + board_cover + "]";
+                + ", board_cover=" + board_cover + ", nick_name=" + nick_name
+                + "]";
     }
-    
+
 }
