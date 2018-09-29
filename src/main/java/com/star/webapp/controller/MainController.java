@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import com.star.webapp.model.Board;
 import com.star.webapp.model.Collection;
 import com.star.webapp.service.BoardService;
 import com.star.webapp.service.CollectionService;
+import com.star.webapp.service.UserService;
 
 @Controller
 @RequestMapping("/main")
@@ -26,6 +28,8 @@ public class MainController {
     private BoardService boardService;
     @Autowired
     private CollectionService collectionService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 获取我的画板列表
@@ -88,7 +92,9 @@ public class MainController {
     @RequestMapping(value = "/mySubscribeList", method = RequestMethod.GET)
     public void mySubscribeList(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
-
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject = userService.myInfo(user_id);
+        response.getWriter().println(jsonObject.toString());
     }
 
     /**
@@ -101,7 +107,8 @@ public class MainController {
     @RequestMapping(value = "/baseInfo", method = RequestMethod.GET)
     public void myBaseInfo(HttpServletResponse response,
             @RequestParam Integer user_id) throws Exception {
-
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject = userService.myBaseInfo(user_id);
+        response.getWriter().println(jsonObject.toString());
     }
-
 }

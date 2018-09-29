@@ -30,6 +30,6 @@
 		<id property="board_id" column="board_id" />
 		<id property="board_name" column="board_name" />
 		<id property="board_cover" column="board_cover" />
-		<id property="nickn_ame" column="board_cover" />
+		<id property="nick_name" column="board_cover" />
 	</resultMap>
 </mapper>

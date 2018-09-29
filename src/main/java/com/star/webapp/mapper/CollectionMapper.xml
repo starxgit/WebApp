@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.star.webapp.mapper.CollectionMapper">
 
-
 	<select id="findMyCollections" parameterType="int"
 		resultType="com.star.webapp.model.Collection">
 		select
@@ -23,6 +22,5 @@
 		board.board_id
 		where collection_id > 10
 	</select>
-
 
 </mapper>

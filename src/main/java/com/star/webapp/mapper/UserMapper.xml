@@ -16,5 +16,10 @@
 		FROM demo.user_info where user_id = #{user_id};
 	</select>
 
+	<select id="FindAllNews" resultType="com.star.webapp.model.News">
+		select
+		news_id,news_cover,news_text from news
+	</select>
+
 
 </mapper>

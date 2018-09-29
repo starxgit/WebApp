@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.star.webapp.mapper.UserMapper;
+import com.star.webapp.model.News;
 import com.star.webapp.model.UserInfo;
 
 @Repository
@@ -21,6 +22,11 @@ public class UserDao implements UserMapper{
     @Override
     public UserInfo myUserInfo(int user_id) {
         return userMapper.myUserInfo(user_id);
+    }
+
+    @Override
+    public List<News> FindAllNews() {
+        return userMapper.FindAllNews();
     }
 
 }
